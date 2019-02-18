@@ -1,5 +1,6 @@
 import os
 
+#remove a file
 def rm (command, flags, params, output):
     if not flags:
         if os.path.exists(params[0]):

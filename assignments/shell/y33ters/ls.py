@@ -1,8 +1,6 @@
 import os
 import sys
 from os import stat
-#from pwd import getpwuid
-#from grp import getgrgid
 from datetime import datetime
 path = '.'
 
@@ -10,8 +8,10 @@ path = '.'
 
 def ls(command, flags, params, output):
 
+    # stores all the files/directors
     files = os.listdir(path)
 
+    #dictionary for rwx output
     permission ={
         0:('---'),
         1:('--x'),
@@ -25,40 +25,36 @@ def ls(command, flags, params, output):
 
     if not output:
         for file in files:
-            #isLink = os.path.islink(file)
-            #isDir = os.path.isdir(file)
             if not flags:
                 print(file)
             else:
-                info = os.lstat(file)
-                #if not isLink and not isDir:
-                #isFile = True
-                octalPerms = oct(info.st_mode)[-3:]
-                octalPerms = int(octalPerms)
-                one = octalPerms % 10
+                info = os.lstat(file) # info for current file
+                octalPerms = oct(info.st_mode)[-3:] # permissions
+                octalPerms = int(octalPerms) #convert the permissions to an int
+                one = octalPerms % 10 #third digit
                 octalPerms = octalPerms // 10
-                ten = octalPerms % 10
-                octalPerms = octalPerms // 10
-                time = info.st_mtime
+                ten = octalPerms % 10 #second digit
+                octalPerms = octalPerms // 10 #first digit
+                time = info.st_mtime 
                 name = stat(file).st_uid
                 group = stat(file).st_gid
                 for f in flags:
-                    if f == '-l':
+                    if f == '-l': #long listing
                         print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
                         print('@' + str(info.st_nlink), end =" ")
                         #print(name, end = " ")
                         #print(group, end = " ")
-                        size = info.st_size
+                        size = info.st_size #size of file
                         print(size, end =" ")
-                        print(datetime.utcfromtimestamp(time).strftime('%Y-%m-%d %H:%M:%S'), end =" ")
+                        print(datetime.utcfromtimestamp(time).strftime('%Y-%m-%d %H:%M:%S'), end =" ") #print the time
                         print(file)
-                    elif f == '-h':
+                    elif f == '-h': #human readable
                         print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
                         print('@' + str(info.st_nlink), end =" ")
                         #print(name, end = " ")
                         #print(group, end = " ")
                         size = info.st_size
-                        for unit in ['bytes', 'MB', 'KB', 'GB']:
+                        for unit in ['bytes', 'MB', 'KB', 'GB']: #check for size unit
                             if size < 1024:
                                 hr_size = str(size) + unit
                                 break

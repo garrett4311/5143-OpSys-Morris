@@ -1,6 +1,6 @@
 import os
 
-
+#print current directory
 def pwd(command, flags, params, output):
     if not output:
         print(os.getcwd())

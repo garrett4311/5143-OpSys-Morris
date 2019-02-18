@@ -1,6 +1,6 @@
 import os
 
-
+#remove a directory
 def rmdir (command, flags, params, output):
     try:
         os.rmdir(params[0])

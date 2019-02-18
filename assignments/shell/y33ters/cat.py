@@ -1,11 +1,11 @@
 import os
-
+# display a file or file(s)
 def cat(command, flags, params, output):
         if not output:
-                for f in params:
+                for f in params: 
                         with open(f) as treasure:
                                 for line in treasure:
-                                        print(line)
+                                        print(line) 
         else:
                 with open(output[0], "w") as outfile:
                         for f in params:

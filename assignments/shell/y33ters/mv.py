@@ -1,5 +1,6 @@
 from shutil import move
 
+#move file to new location
 def mv(command, flags, params, output):
     try:
         move(params[0], params[1])

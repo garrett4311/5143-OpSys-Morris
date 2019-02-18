@@ -1,6 +1,7 @@
 import os
 import re
 
+#search for a word in a file
 def grep(command, flags, params, output):
     with open(params[0]) as treasure:
         x = int(0)

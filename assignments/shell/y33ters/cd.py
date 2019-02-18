@@ -1,5 +1,5 @@
 import os
-
+#change directory
 def cd(command, flags, params, output):
     if len(params) == 1:
         if params[0] == '~':
