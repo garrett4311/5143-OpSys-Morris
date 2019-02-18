@@ -35,4 +35,5 @@ chmod
 ## Sources
 
 * [rugbyprof](https://github.com/rugbyprof/5143-Operating-Systems/blob/master/Resources/ls_command.md) - Used snippets of code to make the ls command work correctly.
-
+* [python os](https://docs.python.org/3/library/os.html)
+*[python shutil](https://docs.python.org/2/library/shutil.html)
