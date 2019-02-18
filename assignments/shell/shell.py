@@ -42,7 +42,7 @@ if __name__ == "__main__":
         cmd = cmd.split()
 
         #REEE = Exit the shell
-        if cmd[0] == "REEE":
+        if cmd[0] == "exit":
             loop = False
         #print history
         elif cmd[0] == "history":
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         #change permissions
         elif cmd[0] == "chmod":
             try:
-                os.chmod(cmd[2], '0o'+cmd[1])
+                os.chmod(cmd[2], '0o'+str(cmd[1]))
             except:
                 print("ERROR: Something wrong with chmod or file name")
         #Else we got a command to run boys        
