@@ -1,0 +1,7 @@
+ls
+ls -a
+ls -l
+ls -la
+ls lah
+ls -lah
+exit

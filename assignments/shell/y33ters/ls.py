@@ -2,6 +2,7 @@ import os
 import sys
 from os import stat
 from datetime import datetime
+
 path = '.'
 
 
@@ -26,7 +27,8 @@ def ls(command, flags, params, output):
     if not output:
         for file in files:
             if not flags:
-                print(file)
+                if not file.startswith('.'):
+                    print(file)
             else:
                 info = os.lstat(file) # info for current file
                 octalPerms = oct(info.st_mode)[-3:] # permissions
@@ -39,7 +41,7 @@ def ls(command, flags, params, output):
                 name = stat(file).st_uid
                 group = stat(file).st_gid
                 for f in flags:
-                    if f == '-l': #long listing
+                    if f == '-la': #long listing with hidden files
                         print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
                         print('@' + str(info.st_nlink), end =" ")
                         #print(name, end = " ")
@@ -48,7 +50,35 @@ def ls(command, flags, params, output):
                         print(size, end =" ")
                         print(datetime.utcfromtimestamp(time).strftime('%Y-%m-%d %H:%M:%S'), end =" ") #print the time
                         print(file)
-                    elif f == '-h': #human readable
+                    elif f == '-a':
+                        print(file)
+                    elif f == '-l':
+                        if not file.startswith('.'):
+                            print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
+                            print('@' + str(info.st_nlink), end =" ")
+                            #print(name, end = " ")
+                            #print(group, end = " ")
+                            size = info.st_size
+                            print(size, end =" ")
+                            print(datetime.utcfromtimestamp(time).strftime('%Y-%m-%d %H:%M:%S'), end =" ")
+                            print(file)
+                    elif f == '-lh': #human readable
+                        if not file.startswith('.'):
+                            print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
+                            print('@' + str(info.st_nlink), end =" ")
+                            #print(name, end = " ")
+                            #print(group, end = " ")
+                            size = info.st_size
+                            for unit in ['bytes', 'MB', 'KB', 'GB']: #check for size unit
+                                if size < 1024:
+                                    hr_size = str(size) + unit
+                                    break
+                                else:
+                                    size /= 1024
+                            print(hr_size, end =" ")
+                            print(datetime.utcfromtimestamp(time).strftime('%Y-%m-%d %H:%M:%S'), end =" ")
+                            print(file)
+                    elif f == '-lah':
                         print(permission[one] + permission[ten] + permission[octalPerms], end =" ")
                         print('@' + str(info.st_nlink), end =" ")
                         #print(name, end = " ")

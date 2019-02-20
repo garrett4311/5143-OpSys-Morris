@@ -26,6 +26,7 @@ if __name__ == "__main__":
     argsDic = {"Command": [], "Params": [], "Flags": [], "Output":[]}
     #list that holds all the commands input
     history = []
+    historyFile = open("history.txt", "w")
 
     loop = True
 
@@ -38,6 +39,7 @@ if __name__ == "__main__":
         #append cmd to list if it's not a call to print the history
         if cmd != "history":
             history.append(cmd)
+            historyFile.write(cmd + '\n')  
         #turns the string in to a list of words that made up the string
         cmd = cmd.split()
 
@@ -52,10 +54,10 @@ if __name__ == "__main__":
                 x += 1
         #change permissions
         elif cmd[0] == "chmod":
-            try:
-                os.chmod(cmd[2], '0o'+str(cmd[1]))
-            except:
-                print("ERROR: Something wrong with chmod or file name")
+            #try:
+                os.chmod(cmd[2], int(cmd[1]))
+            #except:
+                #print("ERROR: Something wrong with chmod or file name")
         #Else we got a command to run boys        
         else:
             #checks for the !x command
@@ -97,4 +99,4 @@ if __name__ == "__main__":
             argsDic[k] = []
 
         cmd = []
-
+    
