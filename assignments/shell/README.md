@@ -1,35 +1,42 @@
-# Shell Project 02/18/2019
+# 02/18/2019
+# 5143 Shell Project 
 # Ben Shelton & Garrett Morris
-The goal of this project was to design a shell that runs
-many of the basic commands that are associated with a shell. 
+
+This was a project written in python that was to mimic a basic shell.
+We implemented many of the basic commands seen in a shell, such as ls, cd
+and cat. 
 
 
-### List of commands implemented
+### Commands
 
 ```
-ls (-l, -h)
-    not working: -a
-cat (1 - n files)
-cd (~, ..)
-cp
-grep
-    not working: -l
-head (-n)
-mkdir
-mv
-pwd
-rm
-rmdir
-sort
-tail (-n)
-wc (-l, -m, -w)
-who
-history
-!x
+
+|Command   |Description                  |Author    |Notes          |
+|----------|-----------------------------|----------|---------------|  
+|   ls     |directory listing            |  Garrett |               |
+|   pwd    |working directory            |  Ben     |               |
+|   cat    |display a file               |  Garrett |               |
+|   mkdir  |make a directory             |  Garrett |               |
+|   cd     |change directory             |  Ben     |               |
+|   cp     |copy file                    |  Garrett |               |
+|   mv     |move file                    |  Garrett |               |
+|   rm     |remove a file                |  Garrett |               |
+|   rmdir  |remove directory             |  Ben     |               |
+|   less   |display a file 1 pg at a time|  Garrett |               |
+|   head   |display first n lines        |  Ben     |               |
+|   tail   |display last n lines         |  Ben     |               |
+|   grep   |search a file for keyword    |  Ben     |-l doesn't work|
+|   wc     |number of words/lines/chars  |  Ben     |               |
+|   sort   |sort data                    |  Ben     |               |
+|   who    |list user currently logged in|  Ben     |               |
+|   history|show history of all commands |  Ben     |               |
+|   !x     |load x command from history  |  Ben     |               |
+|   chmod  |change modify permission     |  Ben     |               |
+
 ```
 
 
-## Sources
+## References
 
 * [rugbyprof](https://github.com/rugbyprof/5143-Operating-Systems/blob/master/Resources/ls_command.md) - Used snippets of code to make the ls command work correctly.
 * [python os](https://docs.python.org/3/library/os.html)
