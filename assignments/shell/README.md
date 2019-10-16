@@ -25,7 +25,7 @@ and cat.
 |   less   |display a file 1 pg at a time|  Garrett |               |
 |   head   |display first n lines        |  Ben     |               |
 |   tail   |display last n lines         |  Ben     |               |
-|   grep   |search a file for keyword    |  Ben     |-l doesn't work|
+|   grep   |search a file for keyword    |  Ben     |               |
 |   wc     |number of words/lines/chars  |  Ben     |               |
 |   sort   |sort data                    |  Ben     |               |
 |   who    |list user currently logged in|  Ben     |               |
